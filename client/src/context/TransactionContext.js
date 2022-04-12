@@ -38,8 +38,6 @@ export const TransactionProvider = ({ children }) => {
         amount: '',
     })
 
-
-
     useEffect(() => {
         if (isLoading) {
             navigate(`/?loading=${currentAccount}`)
@@ -47,19 +45,13 @@ export const TransactionProvider = ({ children }) => {
                 addressTo: '',
                 amount: '',
             })
+            setIstransaction(false)
         } else {
             navigate(`/`)
             console.log(formData)
         }
-    }, [isLoading,transaction])
+    }, [isLoading, transaction])
 
-    useEffect(() => {
-        if (isLoading) {
-            setIstransaction(false)
-        } else {
-            setIstransaction(true)
-        }
-    }, [isLoading,transaction])
 
 
     useEffect(() => {
@@ -157,11 +149,12 @@ export const TransactionProvider = ({ children }) => {
             )
 
             setIsLoading(false)
-
+            setIstransaction(true)
 
         } catch (error) {
             console.log(error)
         }
+
     }
 
 
